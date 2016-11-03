@@ -86,7 +86,7 @@ const resources = [
     status: 200
   },
   {
-    url: 'https://iigb-search.herokuapp.com/en/results/?q=uk',
+    url: 'https://iigb-search.herokuapp.com/en/results/?q=status',
     status: 200
   }
 ];

@@ -1,4 +1,4 @@
-// server.js
+"use strict";
 
 // BASE SETUP
 // =============================================================================
@@ -16,8 +16,8 @@ const express = require('express'), // call express
   path = require("path"),
   baseUrl = process.env.IIGB_BASE_URL,
   ipFilterOn = process.env.IIGB_IP_FILTER,
-  isDev = app.get('env') === 'development';
-port = process.env.PORT || 5000; // set our port
+  isDev = app.get('env') === 'development',
+  port = process.env.PORT || 5000; // set our port
 
 //security headers
 app.use(helmet());
@@ -72,16 +72,16 @@ const resources = [
   {
     url: 'http://uktibeta.s3-website-eu-west-1.amazonaws.com/us/',
     status: 200
-  },{
+  }, {
     url: 'http://uktibeta.s3-website-eu-west-1.amazonaws.com/de/',
     status: 200
-  },{
+  }, {
     url: 'http://uktibeta.s3-website-eu-west-1.amazonaws.com/cn/',
     status: 200
-  },{
+  }, {
     url: 'http://uktibeta.s3-website-eu-west-1.amazonaws.com/in/',
     status: 200
-  },{
+  }, {
     url: 'http://uktibeta.s3-website-eu-west-1.amazonaws.com/int/',
     status: 200
   },
@@ -91,13 +91,11 @@ const resources = [
   }
 ];
 
-const result = function (output) {
-  app.get('/', function (req, res) {
+app.get('/', function (req, res) {
+  shisha.smoke(resources, function (output) {
     res.render('index', {title: "Invest service status", results: output});
-  });
-};
-
-shisha.smoke(resources, {protocol: 'https', domain: 'namshi.com'}, result);
+  })
+});
 
 // START THE SERVER
 // =============================================================================

@@ -84,12 +84,15 @@ const resources = [
   }, {
     url: 'http://uktibeta.s3-website-eu-west-1.amazonaws.com/int/',
     status: 200
-  },
-  {
-    url: 'https://iigb-search.herokuapp.com/en/results/?q=status',
+  }, {
+    url: 'http://httpbin.org',
     status: 200
-  }
+  },
 ];
+// {
+//   url: 'https://iigb-search.herokuapp.com/en/results/?q=status',
+//     status: 200
+// }
 
 app.get('/test', function (req, res) {
   shisha.smoke(resources, function (output) {

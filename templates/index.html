@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="/assets/css/main.css" rel="stylesheet" type="text/css"/>-->
+    <link href="../css/main.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<nav class="container dit-main-nav"><!-- Brand and toggle get grouped for better mobile display -->
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-5 dit-main-logo-container">
+            <a href="#">
+                <img class="dit-main-logo" alt="Brand" src="/assets/media/iigb-logo.png">
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper dit-results dit-results-wrapper">
+    <div class="row">
+        <div class="container">
+            <div class="dit-results-section col-xs-12 col-md-8">
+                <table border="1" cellpadding="5" cellspacing="2">
+                    <tr>
+                        <th class="dit-table-domain">Domain</th>
+                        <th class="dit-table-result">Result</th>
+                    </tr>
+                    <h1>{{title}}</h1>
+                    {% for e in results %}
+                    <tr>
+                        <td class="dit-table-domain">{{e.url}}</td>
+                        <td class="dit-table-result" {% if e.result %}
+                        style="color: white; background-color: darkgreen">{{e.expected}}
+                        {% else %}
+                        style="color: white; background-color: red">{{e.actual}}
+                        {% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </ol>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

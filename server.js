@@ -91,11 +91,21 @@ const resources = [
   }
 ];
 
-app.get('/', function (req, res) {
-  shisha.smoke(resources, function (output) {
+// app.get('/', function (req, res) {
+//   shisha.smoke(resources, function (output) {
+//     res.render('index', {title: "Invest service status", results: output});
+//   })
+// });
+
+const result = function (output) {
+  app.get('/', function (req, res) {
     res.render('index', {title: "Invest service status", results: output});
-  })
-});
+  });
+};
+
+shisha.smoke(resources, {protocol: 'https', domain: 'namshi.com'}, result);
+
+
 
 // START THE SERVER
 // =============================================================================

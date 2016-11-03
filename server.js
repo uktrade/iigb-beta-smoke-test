@@ -91,11 +91,11 @@ const resources = [
   }
 ];
 
-// app.get('/', function (req, res) {
-//   shisha.smoke(resources, function (output) {
-//     res.render('index', {title: "Invest service status", results: output});
-//   })
-// });
+app.get('/test', function (req, res) {
+  shisha.smoke(resources, function (output) {
+    res.render('index', {title: "Invest service status", results: output});
+  })
+});
 
 const result = function (output) {
   app.get('/', function (req, res) {
